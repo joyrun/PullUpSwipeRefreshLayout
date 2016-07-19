@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Lib-refreshLayout</string>
+    <string name="refresh_load_more">加载更多</string>
+    <string name="refresh_loading">正在加载...</string>
+</resources>

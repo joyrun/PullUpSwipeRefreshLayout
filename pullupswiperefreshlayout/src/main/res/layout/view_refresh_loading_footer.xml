@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/view_refresh_loading_footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dip"
+        android:paddingTop="20dip">
+
+        <ProgressBar
+            android:id="@+id/pull_to_refresh_load_progress"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignTop="@+id/pull_to_refresh_loadmore_text"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/pull_to_refresh_loadmore_text"
+            android:layout_toStartOf="@+id/pull_to_refresh_loadmore_text"
+            android:indeterminate="true"/>
+
+        <TextView
+            android:id="@+id/pull_to_refresh_loadmore_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/refresh_loading"
+            android:textColor="#808080"
+            android:textSize="14sp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/view_refresh_click_footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dip"
+        android:paddingTop="20dip"
+        >
+
+
+        <TextView
+            android:id="@+id/load_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/refresh_load_more"
+            android:textColor="#808080"
+            android:textSize="14sp"/>
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/footer_padding"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"/>
+</RelativeLayout>
