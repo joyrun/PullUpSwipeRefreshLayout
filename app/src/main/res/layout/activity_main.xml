@@ -1,21 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.thejoyrun.swiperefreshlayout.demo.MainActivity">
 
-    <com.thejoyrun.pullupswiperefreshlayout.PullUpSwipeRefreshLayout
-        android:id="@+id/refresh_layout"
+    <com.thejoyrun.pullupswiperefreshlayout.SwipeRefreshListView
+        android:id="@+id/swipe_refresh_list_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <ListView
-            android:id="@+id/list_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-    </com.thejoyrun.pullupswiperefreshlayout.PullUpSwipeRefreshLayout>
-
+        android:layout_height="match_parent" />
 </RelativeLayout>
