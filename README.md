@@ -1,4 +1,4 @@
-# PullUpSwipeRefreshLayout
+# 对SwipeRefreshLayout进行拓展，支持上拉刷新
 [![](https://jitpack.io/v/joyrun/PullUpSwipeRefreshLayout.svg)](https://jitpack.io/#joyrun/PullUpSwipeRefreshLayout)
 
 ### 引用方式
