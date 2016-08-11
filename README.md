@@ -1,8 +1,26 @@
 # PullUpSwipeRefreshLayout
 [![](https://jitpack.io/v/joyrun/PullUpSwipeRefreshLayout.svg)](https://jitpack.io/#joyrun/PullUpSwipeRefreshLayout)
 
+### 引用方式
 
+修改项目根目录的build.gradle：
 
+```
+allprojects {
+	repositories {
+	//...
+	maven { url "https://jitpack.io" }
+	}
+}
+```
+
+修改app的build.gradle：
+
+```
+dependencies {
+	compile 'com.github.joyrun:PullUpSwipeRefreshLayout:0.1.1'
+}
+```
 
 
 ## License
