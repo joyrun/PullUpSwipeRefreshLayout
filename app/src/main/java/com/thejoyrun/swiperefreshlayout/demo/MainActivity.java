@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
                     public void run() {
                         addData();
                         refresh_layout.setLoading(false);
+                        refresh_layout.setLoadEnabled(false);
                     }
                 },2000);
             }

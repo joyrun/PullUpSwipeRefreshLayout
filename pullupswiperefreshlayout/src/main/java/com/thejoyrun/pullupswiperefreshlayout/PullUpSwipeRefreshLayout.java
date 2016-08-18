@@ -332,8 +332,8 @@ public class PullUpSwipeRefreshLayout extends SwipeRefreshLayout implements AbsL
     }
 
     public void setLoadEnabled(boolean mLoadEnabled) {
-        updateFooter();
         this.mLoadEnabled = mLoadEnabled;
+        updateFooter();
     }
 
     public boolean isRefreshEnabled() {
