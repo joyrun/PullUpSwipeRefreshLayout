@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -28,6 +29,7 @@ public class PullUpSwipeRefreshLayout extends SwipeRefreshLayout implements AbsL
     private ProgressBar pull_to_refresh_load_progress;
     private EmptyView mEmptyView;
     private ListView mListView;
+
     private long mCreateTimeMillis = System.currentTimeMillis();
 
     /**
@@ -160,6 +162,7 @@ public class PullUpSwipeRefreshLayout extends SwipeRefreshLayout implements AbsL
             pull_to_refresh_load_more_text = (TextView) mFooterView.findViewById(R.id.pull_to_refresh_load_more_text);
             pull_to_refresh_load_progress = (ProgressBar) mFooterView.findViewById(R.id.pull_to_refresh_load_progress);
             pull_to_refresh_load_progress.setVisibility(GONE);
+
             mListView.addFooterView(mFooterView, null, false);
             mFooterView.setOnClickListener(new OnClickListener() {
                 @Override
