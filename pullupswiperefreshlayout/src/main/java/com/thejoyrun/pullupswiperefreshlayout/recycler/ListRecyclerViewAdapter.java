@@ -6,12 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.thejoyrun.pullupswiperefreshlayout.utils.ScreenUtil;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.zip.Inflater;
-
 import static com.thejoyrun.pullupswiperefreshlayout.recycler.ListRecyclerHelper.ItemType.FOOT_TYPE;
 import static com.thejoyrun.pullupswiperefreshlayout.recycler.ListRecyclerHelper.ItemType.HEAD_TYPE;
 
@@ -61,7 +55,6 @@ public abstract class ListRecyclerViewAdapter<T extends ListRecyclerViewAdapter.
         if(holder.getItemViewType() == HEAD_TYPE){
             return;
         }if( holder.getItemViewType() == FOOT_TYPE){
-            holder.itemView.setMinimumWidth(ScreenUtil.getScreenWidth(mContext));
             return;
         }
         onBindViewContentHolder(holder,position);
