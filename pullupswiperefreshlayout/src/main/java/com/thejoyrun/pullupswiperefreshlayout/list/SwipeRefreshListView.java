@@ -1,4 +1,4 @@
-package com.thejoyrun.pullupswiperefreshlayout;
+package com.thejoyrun.pullupswiperefreshlayout.list;
 
 import android.content.Context;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -9,13 +9,18 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
+import com.thejoyrun.pullupswiperefreshlayout.EmptyView;
+import com.thejoyrun.pullupswiperefreshlayout.PullUpSwipeRefreshLayout;
+import com.thejoyrun.pullupswiperefreshlayout.R;
+import com.thejoyrun.pullupswiperefreshlayout.list.ListViewV2;
+
 /**
  * Created by Wiki on 16/7/27.
  */
 
 public class SwipeRefreshListView extends RelativeLayout {
     private EmptyView mEmptyView;
-    private ListView mListView;
+    private ListViewV2 mListView;
     private PullUpSwipeRefreshLayout mPullUpSwipeRefreshLayout;
 
     public SwipeRefreshListView(Context context) {
@@ -40,7 +45,7 @@ public class SwipeRefreshListView extends RelativeLayout {
         layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT);
         this.addView(view, layoutParams);
         mEmptyView = (EmptyView) view.findViewById(R.id.empty_view);
-        mListView = (ListView) view.findViewById(R.id.list_view);
+        mListView = (ListViewV2) view.findViewById(R.id.list_view);
         mPullUpSwipeRefreshLayout = (PullUpSwipeRefreshLayout) view.findViewById(R.id.refresh_layout);
         mPullUpSwipeRefreshLayout.setListViewAndEmptyView(mListView, mEmptyView);
     }

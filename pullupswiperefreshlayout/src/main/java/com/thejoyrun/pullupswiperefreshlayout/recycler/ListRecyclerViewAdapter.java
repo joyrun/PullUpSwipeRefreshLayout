@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.thejoyrun.pullupswiperefreshlayout.utils.ScreenUtil;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.zip.Inflater;
@@ -27,7 +29,7 @@ public abstract class ListRecyclerViewAdapter<T extends ListRecyclerViewAdapter.
 
     private int mLastItemPosition;
 
-    private Context mContext;
+    protected Context mContext;
     private LayoutInflater mLayoutInflater;
 
     public ListRecyclerViewAdapter(Context context){
@@ -43,8 +45,8 @@ public abstract class ListRecyclerViewAdapter<T extends ListRecyclerViewAdapter.
             holder.setItemType(HEAD_TYPE);
             return holder;
         }else if(viewType == FOOT_TYPE){
-            holder = new BaseViewHolder(mHeaderView);
-            holder.setItemType(HEAD_TYPE);
+            holder = new BaseViewHolder(mFooterView);
+            holder.setItemType(FOOT_TYPE);
             return holder;
         }
 
@@ -59,9 +61,9 @@ public abstract class ListRecyclerViewAdapter<T extends ListRecyclerViewAdapter.
         if(holder.getItemViewType() == HEAD_TYPE){
             return;
         }if( holder.getItemViewType() == FOOT_TYPE){
+            holder.itemView.setMinimumWidth(ScreenUtil.getScreenWidth(mContext));
             return;
         }
-
         onBindViewContentHolder(holder,position);
     }
 
@@ -109,7 +111,7 @@ public abstract class ListRecyclerViewAdapter<T extends ListRecyclerViewAdapter.
     }
 
     /**
-     * 获取 item的数目,不需要将 headitem和footeritem
+     * 获取 item的数目,不需要将 headitem和footeritem 的数量返回
      * @return
      */
     public abstract int getListCount();

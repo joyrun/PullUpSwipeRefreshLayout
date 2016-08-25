@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -14,6 +15,8 @@ import android.widget.AbsListView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import com.thejoyrun.pullupswiperefreshlayout.recycler.ListRecyclerView;
 
 /**
  * 继承自SwipeRefreshLayout,从而实现滑动到底部时上拉加载更多的功能.
@@ -28,7 +31,7 @@ public class PullUpSwipeRefreshLayout extends SwipeRefreshLayout implements AbsL
     private TextView pull_to_refresh_load_more_text;
     private ProgressBar pull_to_refresh_load_progress;
     private EmptyView mEmptyView;
-    private ListView mListView;
+    private ListViewInter mListView;
 
     private long mCreateTimeMillis = System.currentTimeMillis();
 
@@ -77,15 +80,15 @@ public class PullUpSwipeRefreshLayout extends SwipeRefreshLayout implements AbsL
         super.onLayout(changed, left, top, right, bottom);
     }
 
-    public void setListView(ListView listView) {
+    public void setListView(ListViewInter listView) {
         this.mListView = listView;
         initListView();
     }
 
-    public void setListViewAndEmptyView(ListView listView, EmptyView emptyView) {
+    public void setListViewAndEmptyView(ListViewInter listView, EmptyView emptyView) {
         setListView(listView);
         this.mEmptyView = emptyView;
-        listView.setEmptyView(emptyView);
+        listView.setListEmptyView(emptyView);
     }
     @Override
     public boolean dispatchTouchEvent(@NonNull MotionEvent event) {
@@ -126,7 +129,7 @@ public class PullUpSwipeRefreshLayout extends SwipeRefreshLayout implements AbsL
      * 判断是否到了最底部
      */
     private boolean isBottom() {
-        return mListView != null && mListView.getAdapter() != null && mListView.getLastVisiblePosition() >= (mListView.getAdapter().getCount() - 1);
+        return mListView != null && mListView.isAdapterExist() && mListView.getListLastVisiblePosition() >= (mListView.getListItemCount() - 1);
     }
 
     /**
@@ -163,7 +166,7 @@ public class PullUpSwipeRefreshLayout extends SwipeRefreshLayout implements AbsL
             pull_to_refresh_load_progress = (ProgressBar) mFooterView.findViewById(R.id.pull_to_refresh_load_progress);
             pull_to_refresh_load_progress.setVisibility(GONE);
 
-            mListView.addFooterView(mFooterView, null, false);
+            mListView.addFooterItem(mFooterView);
             mFooterView.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -213,9 +216,9 @@ public class PullUpSwipeRefreshLayout extends SwipeRefreshLayout implements AbsL
     private int mPreviousFirstVisibleItem = 0;
 
     private int getTopItemScrollY() {
-        if (mListView == null || mListView.getChildAt(0) == null)
+        if (mListView == null || mListView.getListChildAt(0) == null)
             return 0;
-        View topChild = mListView.getChildAt(0);
+        View topChild = mListView.getListChildAt(0);
         return topChild.getTop();
     }
 
@@ -290,8 +293,8 @@ public class PullUpSwipeRefreshLayout extends SwipeRefreshLayout implements AbsL
     @Override
     public void setRefreshing(final boolean refreshing) {
         isRealRefreshing = refreshing;
-        if (refreshing && mListView.getAdapter() != null && mEmptyView != null) {
-            int listCount = mListView.getAdapter().getCount() - mListView.getHeaderViewsCount() - mListView.getFooterViewsCount();
+        if (refreshing && mListView.isAdapterExist() && mEmptyView != null) {
+            int listCount = mListView.getListItemCount() - mListView.getListHeaderViewsCount() - mListView.getListFooterViewsCount();
             if (listCount == 0) {
                 mEmptyView.setRefreshing(true);
                 return;

@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.thejoyrun.pullupswiperefreshlayout.PullUpSwipeRefreshLayout;
-import com.thejoyrun.pullupswiperefreshlayout.SwipeRefreshListView;
+import com.thejoyrun.pullupswiperefreshlayout.list.SwipeRefreshListView;
 
 import java.util.Random;
 

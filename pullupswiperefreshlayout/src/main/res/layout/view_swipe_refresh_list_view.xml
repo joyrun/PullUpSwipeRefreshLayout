@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ListView
+        <com.thejoyrun.pullupswiperefreshlayout.list.ListViewV2
             android:id="@+id/list_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

@@ -3,6 +3,7 @@ package com.thejoyrun.pullupswiperefreshlayout.recycler;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -22,7 +23,7 @@ import com.thejoyrun.pullupswiperefreshlayout.R;
 public class SwipeRefreshRecyclerView extends RelativeLayout {
 
     private EmptyView mEmptyView;
-    private RecyclerView mRecyclerView;
+    private ListRecyclerView mRecyclerView;
     private PullUpSwipeRefreshLayout mPullUpSwipeRefreshLayout;
 
     public SwipeRefreshRecyclerView(Context context) {
@@ -45,17 +46,20 @@ public class SwipeRefreshRecyclerView extends RelativeLayout {
         layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT);
         this.addView(view, layoutParams);
         mEmptyView = (EmptyView) view.findViewById(R.id.empty_view);
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerview);
+        mRecyclerView = (ListRecyclerView) view.findViewById(R.id.recyclerview);
         mPullUpSwipeRefreshLayout = (PullUpSwipeRefreshLayout) view.findViewById(R.id.refresh_layout);
-        mPullUpSwipeRefreshLayout.setListViewAndEmptyView(mListView, mEmptyView);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
+        mRecyclerView.setLayoutManager(linearLayoutManager);
+        mPullUpSwipeRefreshLayout.setListViewAndEmptyView(mRecyclerView, mEmptyView);
     }
 
     public EmptyView getEmptyView() {
         return mEmptyView;
     }
 
-    public ListView getListView() {
-        return mListView;
+    public ListRecyclerView getListRecyclerView() {
+        return mRecyclerView;
     }
 
     public PullUpSwipeRefreshLayout getPullUpSwipeRefreshLayout() {
@@ -99,7 +103,8 @@ public class SwipeRefreshRecyclerView extends RelativeLayout {
     }
 
     public void setLoading(boolean b) {
-        mPullUpSwipeRefreshLayout.setLoading(b);
+        mPullUpSwipeRefreshLayout.
+                setLoading(b);
     }
 
 }
