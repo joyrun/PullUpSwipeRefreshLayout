@@ -133,7 +133,7 @@ public abstract class ListRecyclerViewAdapter<T extends ListRecyclerViewAdapter.
         return mFooterView == null ? 0 : 1;
     }
 
-    public class BaseViewHolder extends RecyclerView.ViewHolder{
+    public static class BaseViewHolder extends RecyclerView.ViewHolder{
 
         private int itemType;
 

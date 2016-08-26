@@ -36,7 +36,7 @@ public class ListRecyclerView<T extends ListRecyclerViewAdapter>extends Recycler
     /**
      * 可以通过setRecyclerAdapter api设置Adapter
      * @param adapter
-     * @Hide
+     * @hide
      */
     @Override
     final public void setAdapter(Adapter adapter) {

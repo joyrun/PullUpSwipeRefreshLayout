@@ -51,7 +51,6 @@ public abstract class BaseSwipeRefreshView extends RelativeLayout {
         mPullUpSwipeRefreshLayout = (PullUpSwipeRefreshLayout) view.findViewById(R.id.refresh_layout);
     }
 
-
     public EmptyView getEmptyView() {
         return mEmptyView;
     }
