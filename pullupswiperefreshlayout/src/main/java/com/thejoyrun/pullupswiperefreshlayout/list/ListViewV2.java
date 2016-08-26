@@ -14,11 +14,11 @@ import com.thejoyrun.pullupswiperefreshlayout.ListViewInter;
 
 public class ListViewV2 extends ListView implements ListViewInter {
     public ListViewV2(Context context) {
-        this(context, null, 0);
+        super(context);
     }
 
     public ListViewV2(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
+        super(context, attrs);
     }
 
     public ListViewV2(Context context, AttributeSet attrs, int defStyleAttr) {

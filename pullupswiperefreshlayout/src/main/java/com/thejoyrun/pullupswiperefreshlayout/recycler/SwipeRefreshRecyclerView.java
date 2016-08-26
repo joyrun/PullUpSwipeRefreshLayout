@@ -26,11 +26,11 @@ public class SwipeRefreshRecyclerView extends BaseSwipeRefreshView {
     private ListRecyclerView mRecyclerView;
 
     public SwipeRefreshRecyclerView(Context context) {
-        this(context,null,0);
+        super(context);
     }
 
     public SwipeRefreshRecyclerView(Context context, @Nullable AttributeSet attrs) {
-        this(context, attrs,0);
+        super(context, attrs);
     }
 
     public SwipeRefreshRecyclerView(Context context, @Nullable AttributeSet attrs, int defStyle) {

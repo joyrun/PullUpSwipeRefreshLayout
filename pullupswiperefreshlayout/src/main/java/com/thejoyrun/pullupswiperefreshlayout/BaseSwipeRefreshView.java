@@ -22,11 +22,13 @@ public abstract class BaseSwipeRefreshView extends RelativeLayout {
     protected PullUpSwipeRefreshLayout mPullUpSwipeRefreshLayout;
 
     public BaseSwipeRefreshView(Context context) {
-        this(context, null, 0);
+        super(context);
+        init(context);
     }
 
     public BaseSwipeRefreshView(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
+        super(context, attrs);
+        init(context);
     }
 
     public BaseSwipeRefreshView(Context context, AttributeSet attrs, int defStyleAttr) {

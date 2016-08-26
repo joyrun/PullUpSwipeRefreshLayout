@@ -19,11 +19,13 @@ public class EmptyView extends RelativeLayout {
     private EmptyViewListener mEmptyViewListener;
 
     public EmptyView(Context context) {
-        this(context, null, 0);
+        super(context);
+        init(context);
     }
 
     public EmptyView(Context context, AttributeSet attrs) {
-        this(context, attrs,0);
+        super(context, attrs);
+        init(context);
     }
 
     public EmptyView(Context context, AttributeSet attrs, int defStyle) {

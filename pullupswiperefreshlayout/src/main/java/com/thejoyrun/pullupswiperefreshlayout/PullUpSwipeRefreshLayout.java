@@ -59,11 +59,16 @@ public class PullUpSwipeRefreshLayout extends SwipeRefreshLayout implements AbsL
     }
 
     public PullUpSwipeRefreshLayout(Context context) {
-        this(context,null);
+        super(context);
+        initView(context);
     }
 
     public PullUpSwipeRefreshLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
+        initView(context);
+    }
+
+    private void initView(Context context) {
         mTouchSlop = ViewConfiguration.get(context).getScaledTouchSlop();
         // 设置下拉刷新时的颜色值,颜色值需要定义在xml中
         this.setColorSchemeResources(android.R.color.holo_red_light, android.R.color.holo_green_light, android.R.color.holo_orange_light, android.R.color.holo_blue_bright);

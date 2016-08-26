@@ -24,11 +24,11 @@ public class SwipeRefreshListView extends BaseSwipeRefreshView {
     private ListViewV2 mListView;
 
     public SwipeRefreshListView(Context context) {
-        this(context, null, 0);
+        super(context);
     }
 
     public SwipeRefreshListView(Context context, AttributeSet attrs) {
-        this(context, attrs,0);
+        super(context);
     }
 
     public SwipeRefreshListView(Context context, AttributeSet attrs, int defStyleAttr) {
