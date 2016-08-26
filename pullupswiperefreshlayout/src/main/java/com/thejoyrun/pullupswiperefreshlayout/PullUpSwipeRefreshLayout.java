@@ -59,8 +59,7 @@ public class PullUpSwipeRefreshLayout extends SwipeRefreshLayout implements AbsL
     }
 
     public PullUpSwipeRefreshLayout(Context context) {
-        super(context);
-        initView(context);
+        this(context, null);
     }
 
     public PullUpSwipeRefreshLayout(Context context, AttributeSet attrs) {

@@ -22,11 +22,11 @@ public class ListRecyclerView<T extends ListRecyclerViewAdapter>extends Recycler
     private View mHeaderView;
 
     public ListRecyclerView(Context context) {
-        super(context);
+        this(context, null, 0);
     }
 
     public ListRecyclerView(Context context, @Nullable AttributeSet attrs) {
-        super(context, attrs);
+        this(context, attrs, 0);
     }
 
     public ListRecyclerView(Context context, @Nullable AttributeSet attrs, int defStyle) {
