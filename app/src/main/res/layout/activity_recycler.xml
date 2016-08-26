@@ -6,8 +6,15 @@
     android:layout_height="match_parent"
     tools:context="com.thejoyrun.swiperefreshlayout.demo.ListViewActivity">
 
+    <TextView
+        android:id="@+id/text_topbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="toubu "/>
+
     <com.thejoyrun.pullupswiperefreshlayout.recycler.SwipeRefreshRecyclerView
         android:id="@+id/swipe_refresh_list_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_below="@id/text_topbar"/>
 </RelativeLayout>

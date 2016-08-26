@@ -64,7 +64,7 @@ public class RecyclerViewActivity extends Activity {
                 },2000);
             }
         });
-        refresh_layout.setLoadAutoEnabled(false);
+        refresh_layout.setLoadAutoEnabled(true);
 
 
 

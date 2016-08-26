@@ -22,7 +22,7 @@ public abstract class BaseSwipeRefreshView extends RelativeLayout {
     protected PullUpSwipeRefreshLayout mPullUpSwipeRefreshLayout;
 
     public BaseSwipeRefreshView(Context context) {
-        super(context, null, 0);
+        this(context, null, 0);
     }
 
     public BaseSwipeRefreshView(Context context, AttributeSet attrs) {

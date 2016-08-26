@@ -52,7 +52,7 @@ public abstract class ListRecyclerViewAdapter<T extends ListRecyclerViewAdapter.
 
         onBindViewContentHolder(holder,position);
     }
-    
+
     /**
      *   与onBindViewHolder一致,
      *  @param holder   该holder不包括 headitem 和 footitem的位置
