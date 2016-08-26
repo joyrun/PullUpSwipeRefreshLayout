@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.thejoyrun.swiperefreshlayout.demo.ListViewActivity">
 
-    <com.thejoyrun.pullupswiperefreshlayout.recycler.SwipeRefreshRecyclerView
+    <com.thejoyrun.pullupswiperefreshlayout.list.SwipeRefreshListView
         android:id="@+id/swipe_refresh_list_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

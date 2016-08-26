@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.thejoyrun.swiperefreshlayout.demo.MainActivity">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <com.thejoyrun.pullupswiperefreshlayout.list.SwipeRefreshListView
-        android:id="@+id/swipe_refresh_list_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-</RelativeLayout>
+    <Button
+        android:id="@+id/to_recyclerview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="打开 recyclerView"/>
+
+    <Button
+        android:id="@+id/to_listview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="打开 listview"/>
+
+</LinearLayout>

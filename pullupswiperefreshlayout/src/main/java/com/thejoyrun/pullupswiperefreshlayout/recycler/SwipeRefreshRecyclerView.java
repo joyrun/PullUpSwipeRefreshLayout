@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
+import com.thejoyrun.pullupswiperefreshlayout.BaseSwipeRefreshView;
 import com.thejoyrun.pullupswiperefreshlayout.EmptyView;
 import com.thejoyrun.pullupswiperefreshlayout.PullUpSwipeRefreshLayout;
 import com.thejoyrun.pullupswiperefreshlayout.R;
@@ -20,11 +21,9 @@ import com.thejoyrun.pullupswiperefreshlayout.R;
  * Created by keven on 16/8/24.
  */
 
-public class SwipeRefreshRecyclerView extends RelativeLayout {
+public class SwipeRefreshRecyclerView extends BaseSwipeRefreshView {
 
-    private EmptyView mEmptyView;
     private ListRecyclerView mRecyclerView;
-    private PullUpSwipeRefreshLayout mPullUpSwipeRefreshLayout;
 
     public SwipeRefreshRecyclerView(Context context) {
         this(context,null,0);
@@ -36,19 +35,17 @@ public class SwipeRefreshRecyclerView extends RelativeLayout {
 
     public SwipeRefreshRecyclerView(Context context, @Nullable AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        init(context);
     }
 
-    private void init(Context context) {
-        LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.view_swipe_refresh_recyclerview, null);
-        RelativeLayout.LayoutParams layoutParams = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT);
-        this.addView(view, layoutParams);
-        mEmptyView = (EmptyView) view.findViewById(R.id.empty_view);
-        mRecyclerView = (ListRecyclerView) view.findViewById(R.id.recyclerview);
-        mPullUpSwipeRefreshLayout = (PullUpSwipeRefreshLayout) view.findViewById(R.id.refresh_layout);
+    @Override
+    protected int getLayoutId() {
+        return R.layout.view_swipe_refresh_recyclerview;
+    }
 
+    @Override
+    protected void initView(Context context,View view) {
+        super.initView(context, view);
+        mRecyclerView = (ListRecyclerView) view.findViewById(R.id.recyclerview);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(linearLayoutManager);
         mPullUpSwipeRefreshLayout.setListViewAndEmptyView(mRecyclerView, mEmptyView);
@@ -61,50 +58,4 @@ public class SwipeRefreshRecyclerView extends RelativeLayout {
     public ListRecyclerView getListRecyclerView() {
         return mRecyclerView;
     }
-
-    public PullUpSwipeRefreshLayout getPullUpSwipeRefreshLayout() {
-        return mPullUpSwipeRefreshLayout;
-    }
-
-    public void setOnLoadListener(PullUpSwipeRefreshLayout.OnLoadListener loadListener) {
-        mPullUpSwipeRefreshLayout.setOnLoadListener(loadListener);
-    }
-
-    public void setRefreshing(boolean refreshing) {
-        mPullUpSwipeRefreshLayout.setRefreshing(refreshing);
-    }
-
-    public void setOnRefreshListener(SwipeRefreshLayout.OnRefreshListener listener) {
-        mPullUpSwipeRefreshLayout.setOnRefreshListener(listener);
-    }
-
-    public void setRefreshEnabled(boolean mRefreshEnabled) {
-        mPullUpSwipeRefreshLayout.setRefreshEnabled(mRefreshEnabled);
-    }
-
-    public boolean isRefreshEnabled() {
-        return mPullUpSwipeRefreshLayout.isRefreshEnabled();
-    }
-
-    public void setLoadEnabled(boolean mLoadEnabled) {
-        mPullUpSwipeRefreshLayout.setLoadEnabled(mLoadEnabled);
-    }
-
-    public boolean isLoadEnabled() {
-        return mPullUpSwipeRefreshLayout.isLoadEnabled();
-    }
-
-    public void setLoadAutoEnabled(boolean loadAutoEnabled) {
-        mPullUpSwipeRefreshLayout.setLoadAutoEnabled(loadAutoEnabled);
-    }
-
-    public boolean isLoadAutoEnabled() {
-        return mPullUpSwipeRefreshLayout.isLoadAutoEnabled();
-    }
-
-    public void setLoading(boolean b) {
-        mPullUpSwipeRefreshLayout.
-                setLoading(b);
-    }
-
 }

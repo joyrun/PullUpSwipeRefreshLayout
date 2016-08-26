@@ -4,17 +4,13 @@ import android.content.Context;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.widget.AbsListView;
-import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.thejoyrun.pullupswiperefreshlayout.recycler.ListRecyclerView;
@@ -164,7 +160,7 @@ public class PullUpSwipeRefreshLayout extends SwipeRefreshLayout implements AbsL
         if (mFooterView == null) {
             mFooterView = LayoutInflater.from(getContext()).inflate(R.layout.view_refresh_loading_footer, null, false);
 
-            mFooterView.setLayoutParams(new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT));
+            mFooterView.setLayoutParams(new AbsListView.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT));
             pull_to_refresh_load_more_text = (TextView) mFooterView.findViewById(R.id.pull_to_refresh_load_more_text);
             pull_to_refresh_load_progress = (ProgressBar) mFooterView.findViewById(R.id.pull_to_refresh_load_progress);
             pull_to_refresh_load_progress.setVisibility(GONE);
@@ -351,5 +347,17 @@ public class PullUpSwipeRefreshLayout extends SwipeRefreshLayout implements AbsL
 
     public void setRefreshEnabled(boolean mRefreshEnabled) {
         this.mRefreshEnabled = mRefreshEnabled;
+    }
+
+    public void setFooterViewShow(boolean toShow){
+        if(null != mFooterView){
+            if(toShow){
+                mFooterView.setVisibility(VISIBLE);
+                mFooterView.getLayoutParams().height = LayoutParams.WRAP_CONTENT;
+            }else {
+                mFooterView.setVisibility(GONE);
+                mFooterView.getLayoutParams().height = 0;
+            }
+        }
     }
 }

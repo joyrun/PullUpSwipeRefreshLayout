@@ -35,7 +35,6 @@ public class RecyclerViewActivity extends Activity {
         refresh_layout = (SwipeRefreshRecyclerView) findViewById(R.id.swipe_refresh_list_view);
 
         mRecyclerAdapter = new RecyclerAdapter(this);
-
         refresh_layout.getListRecyclerView().setRecyclerAdapter(mRecyclerAdapter);
         refresh_layout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -47,6 +46,7 @@ public class RecyclerViewActivity extends Activity {
                         mRecyclerAdapter.clear();
                         addData();
                         refresh_layout.setRefreshing(false);
+                        refresh_layout.setLoadEnabled(true);
                     }
                 },2000);
             }
