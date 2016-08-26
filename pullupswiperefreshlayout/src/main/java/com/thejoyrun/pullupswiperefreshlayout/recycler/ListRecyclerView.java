@@ -57,7 +57,6 @@ public class ListRecyclerView<T extends ListRecyclerViewAdapter>extends Recycler
         if(null != mFooterView){
             addFooterItem(mFooterView);
         }
-        
     }
 
     /**

@@ -46,25 +46,13 @@ public abstract class ListRecyclerViewAdapter<T extends ListRecyclerViewAdapter.
     @Override
     final public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         mLastItemPosition = position;
-        if(holder.getItemViewType() == HEAD_TYPE){
-            return;
-        }if( holder.getItemViewType() == FOOT_TYPE){
+        if( holder.getItemViewType() == FOOT_TYPE){
             return;
         }
 
         onBindViewContentHolder(holder,position);
     }
-
-    @Override
-    final public void onBindViewHolder(RecyclerView.ViewHolder holder, int position, List payloads) {
-        super.onBindViewHolder(holder, position, payloads);
-        onBindViewContentHolder(holder, position, payloads);
-    }
-
-    public void onBindViewContentHolder(RecyclerView.ViewHolder holder, int position, List payloads){
-
-    }
-
+    
     /**
      *   与onBindViewHolder一致,
      *  @param holder   该holder不包括 headitem 和 footitem的位置
