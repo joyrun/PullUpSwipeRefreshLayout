@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.List;
+
 import static com.thejoyrun.pullupswiperefreshlayout.recycler.ListRecyclerHelper.ItemType.FOOT_TYPE;
 import static com.thejoyrun.pullupswiperefreshlayout.recycler.ListRecyclerHelper.ItemType.HEAD_TYPE;
 
@@ -15,10 +17,6 @@ import static com.thejoyrun.pullupswiperefreshlayout.recycler.ListRecyclerHelper
 
 public abstract class ListRecyclerViewAdapter<T extends ListRecyclerViewAdapter.BaseViewHolder> extends RecyclerView.Adapter {
 
-//    private ArrayList<BaseViewHolder> mFooterViewDatas = new ArrayList<>();
-//    private ArrayList<BaseViewHolder> mHeaderViewDatas = new ArrayList<>();
-//
-    private View mHeaderView;
     private View mFooterView;
 
     private int mLastItemPosition;
@@ -34,11 +32,7 @@ public abstract class ListRecyclerViewAdapter<T extends ListRecyclerViewAdapter.
     @Override
     final public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         BaseViewHolder holder = null;
-        if(viewType == HEAD_TYPE){
-            holder = new BaseViewHolder(mHeaderView);
-            holder.setItemType(HEAD_TYPE);
-            return holder;
-        }else if(viewType == FOOT_TYPE){
+        if(viewType == FOOT_TYPE){
             holder = new BaseViewHolder(mFooterView);
             holder.setItemType(FOOT_TYPE);
             return holder;
@@ -57,7 +51,18 @@ public abstract class ListRecyclerViewAdapter<T extends ListRecyclerViewAdapter.
         }if( holder.getItemViewType() == FOOT_TYPE){
             return;
         }
+
         onBindViewContentHolder(holder,position);
+    }
+
+    @Override
+    final public void onBindViewHolder(RecyclerView.ViewHolder holder, int position, List payloads) {
+        super.onBindViewHolder(holder, position, payloads);
+        onBindViewContentHolder(holder, position, payloads);
+    }
+
+    public void onBindViewContentHolder(RecyclerView.ViewHolder holder, int position, List payloads){
+
     }
 
     /**
@@ -69,12 +74,10 @@ public abstract class ListRecyclerViewAdapter<T extends ListRecyclerViewAdapter.
 
     @Override
     final public int getItemViewType(int position) {
-        if(null != mHeaderView && position < 1){
-            return HEAD_TYPE;
-        }else if(null != mFooterView && (getItemCount() - position) <= 1){
+        if(null != mFooterView && (getItemCount() - position) <= 1){
             return FOOT_TYPE;
         }
-        return super.getItemViewType(null == mHeaderView ? position : position - 1);
+        return super.getItemViewType(position);
     }
 
     /**
@@ -84,37 +87,26 @@ public abstract class ListRecyclerViewAdapter<T extends ListRecyclerViewAdapter.
      */
     public abstract int getItemType(int position);
 
+    /**
+     * 获取所有item的数量 (包括footeritem)
+     * @return
+     */
     @Override
     final public int getItemCount() {
         int itemcount = 0;
-
-        itemcount = null == mHeaderView ? itemcount : itemcount + 1;
         itemcount = null == mFooterView ? itemcount : itemcount + 1;
         itemcount = itemcount + getListCount();
-
         return itemcount;
     }
 
     /**
-     * 获取所有item的数量 (包括headitem 和 footeritem)
-     * @return
-     */
-    public int getCount(){
-        return getItemCount();
-    }
-
-    /**
-     * 获取 item的数目,不需要将 headitem和footeritem 的数量返回
+     * 获取 item的数目,不需要将 footeritem 的数量返回
      * @return
      */
     public abstract int getListCount();
 
     public void addFooterView(View v){
         mFooterView = v;
-    }
-
-    public void addHeaderView(View v){
-        mHeaderView = v;
     }
 
     /**
@@ -126,7 +118,7 @@ public abstract class ListRecyclerViewAdapter<T extends ListRecyclerViewAdapter.
     }
 
     public int getHeaderViewsCount(){
-        return mHeaderView == null ? 0 : 1;
+        return 0;
     }
 
     public int getFooterViewsCount(){

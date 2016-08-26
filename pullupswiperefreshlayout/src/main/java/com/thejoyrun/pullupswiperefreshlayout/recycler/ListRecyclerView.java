@@ -108,6 +108,10 @@ public class ListRecyclerView<T extends ListRecyclerViewAdapter>extends Recycler
         return getChildAt(index);
     }
 
+    /**
+     * 改方法只会返回 0,若用户需要头需要自己定义
+     * @return
+     */
     @Override
     public int getListHeaderViewsCount() {
         int count = 0;

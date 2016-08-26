@@ -13,8 +13,6 @@ import android.widget.AbsListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.thejoyrun.pullupswiperefreshlayout.recycler.ListRecyclerView;
-
 /**
  * 继承自SwipeRefreshLayout,从而实现滑动到底部时上拉加载更多的功能.
  * Created by Wiki on 16/7/27.
