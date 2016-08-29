@@ -65,7 +65,7 @@ public abstract class ListRecyclerViewAdapter<T extends ListRecyclerViewAdapter.
         if(null != mFooterView && (getItemCount() - position) <= 1){
             return FOOT_TYPE;
         }
-        return super.getItemViewType(position);
+        return getItemType(position);
     }
 
     /**

@@ -28,7 +28,7 @@ public class SwipeRefreshListView extends BaseSwipeRefreshView {
     public SwipeRefreshListView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
-
+我p
     @Override
     protected int getLayoutId() {
         return R.layout.view_pus_swipe_refresh_list_view;
