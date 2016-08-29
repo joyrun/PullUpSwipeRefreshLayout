@@ -1,19 +1,13 @@
 package com.thejoyrun.pullupswiperefreshlayout.list;
 
 import android.content.Context;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.AttributeSet;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 
 import com.thejoyrun.pullupswiperefreshlayout.BaseSwipeRefreshView;
 import com.thejoyrun.pullupswiperefreshlayout.EmptyView;
-import com.thejoyrun.pullupswiperefreshlayout.PullUpSwipeRefreshLayout;
 import com.thejoyrun.pullupswiperefreshlayout.R;
-import com.thejoyrun.pullupswiperefreshlayout.list.ListViewV2;
 
 /**
  * Created by Wiki on 16/7/27.
@@ -37,7 +31,7 @@ public class SwipeRefreshListView extends BaseSwipeRefreshView {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.view_swipe_refresh_list_view;
+        return R.layout.view_pus_swipe_refresh_list_view;
     }
 
     @Override

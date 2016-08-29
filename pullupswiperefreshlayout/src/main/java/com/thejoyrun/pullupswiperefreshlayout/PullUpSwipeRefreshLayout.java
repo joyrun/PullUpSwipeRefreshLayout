@@ -160,7 +160,7 @@ public class PullUpSwipeRefreshLayout extends SwipeRefreshLayout implements AbsL
 
     public void initListView() {
         if (mFooterView == null) {
-            mFooterView = LayoutInflater.from(getContext()).inflate(R.layout.view_refresh_loading_footer, null, false);
+            mFooterView = LayoutInflater.from(getContext()).inflate(R.layout.view_pus_refresh_loading_footer, null, false);
 
             mFooterView.setLayoutParams(new AbsListView.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT));
             pull_to_refresh_load_more_text = (TextView) mFooterView.findViewById(R.id.pull_to_refresh_load_more_text);

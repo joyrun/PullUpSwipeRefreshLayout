@@ -33,7 +33,7 @@ public class EmptyView extends RelativeLayout {
 
     private void init(Context context) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.view_refresh_empty, null);
+        View view = inflater.inflate(R.layout.view_pus_refresh_empty, null);
         RelativeLayout.LayoutParams layoutParams = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT);
         this.addView(view, layoutParams);

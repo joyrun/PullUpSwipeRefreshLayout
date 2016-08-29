@@ -2,19 +2,12 @@ package com.thejoyrun.pullupswiperefreshlayout.recycler;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
 
 import com.thejoyrun.pullupswiperefreshlayout.BaseSwipeRefreshView;
 import com.thejoyrun.pullupswiperefreshlayout.EmptyView;
-import com.thejoyrun.pullupswiperefreshlayout.PullUpSwipeRefreshLayout;
 import com.thejoyrun.pullupswiperefreshlayout.R;
 
 /**
@@ -39,7 +32,7 @@ public class SwipeRefreshRecyclerView extends BaseSwipeRefreshView {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.view_swipe_refresh_recyclerview;
+        return R.layout.view_pus_swipe_refresh_recyclerview;
     }
 
     @Override

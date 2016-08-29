@@ -20,7 +20,7 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:indeterminate="true"
-        android:src="@drawable/icon_emptyview_wifi" />
+        android:src="@drawable/icon_pus_wifi" />
 
     <TextView
         android:id="@+id/empty_tips"
