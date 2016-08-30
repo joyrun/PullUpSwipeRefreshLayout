@@ -21,6 +21,8 @@ public class PullUpSwipeRefreshLayout extends SwipeRefreshLayout implements AbsL
     private boolean mLoadAutoEnabled = true;
     private boolean mLoadEnabled = true;
     private boolean mRefreshEnabled = true;
+    private boolean mMeasured = false;
+    private boolean mPreMeasureRefreshing = false;
 
     private View mFooterView;
     private TextView pull_to_refresh_load_more_text;
@@ -291,10 +293,23 @@ public class PullUpSwipeRefreshLayout extends SwipeRefreshLayout implements AbsL
 
     private boolean isRealRefreshing = false;
 
+
+    @Override
+    public void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        if (!mMeasured) {
+            mMeasured = true;
+            if (mPreMeasureRefreshing) {
+                super.setRefreshing(true);
+            }
+        }
+    }
+
+
     @Override
     public void setRefreshing(final boolean refreshing) {
         isRealRefreshing = refreshing;
-        if (refreshing && mListView.isAdapterExist() && mEmptyView != null) {
+        if (refreshing && null != mListView && mListView.isAdapterExist() && mEmptyView != null) {
             int listCount = mListView.getListItemCount() - mListView.getListHeaderViewsCount() - mListView.getListFooterViewsCount();
             if (listCount == 0) {
                 mEmptyView.setRefreshing(true);
@@ -302,18 +317,15 @@ public class PullUpSwipeRefreshLayout extends SwipeRefreshLayout implements AbsL
             }
         }
 
-        if (isRealRefreshing && (System.currentTimeMillis() - mCreateTimeMillis) < 150) {
-            mHandler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    if (isRealRefreshing != isRefreshing()) {
-                        PullUpSwipeRefreshLayout.super.setRefreshing(isRealRefreshing);
-                    }
-                }
-            }, 150);
-        } else {
-            PullUpSwipeRefreshLayout.super.setRefreshing(isRealRefreshing);
+        if (!mMeasured) {
+            mPreMeasureRefreshing = refreshing;
+        }else {
+            super.setRefreshing(refreshing);
         }
+        if (!refreshing) {
+            mPreMeasureRefreshing = false;
+        }
+
     }
 
 
