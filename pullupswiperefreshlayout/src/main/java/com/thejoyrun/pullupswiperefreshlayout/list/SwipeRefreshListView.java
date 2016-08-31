@@ -7,7 +7,9 @@ import android.widget.ListView;
 
 import com.thejoyrun.pullupswiperefreshlayout.BaseSwipeRefreshView;
 import com.thejoyrun.pullupswiperefreshlayout.EmptyView;
+import com.thejoyrun.pullupswiperefreshlayout.ListViewInter;
 import com.thejoyrun.pullupswiperefreshlayout.R;
+import com.thejoyrun.pullupswiperefreshlayout.recycler.ListRecyclerView;
 
 /**
  * Created by Wiki on 16/7/27.
@@ -43,6 +45,21 @@ public class SwipeRefreshListView extends BaseSwipeRefreshView {
 
     public EmptyView getEmptyView() {
         return mEmptyView;
+    }
+
+    @Override
+    public void setRootListView(ListViewInter rootListView) {
+        if(rootListView instanceof ListViewV2) {
+            mListView = (ListViewV2) rootListView;
+        }else {
+            new ClassCastException();
+        }
+        mPullUpSwipeRefreshLayout.setListViewAndEmptyView(mListView,mEmptyView);
+    }
+
+    @Override
+    public ListViewV2 getRootListView() {
+        return mListView;
     }
 
     public ListView getListView() {

@@ -91,6 +91,7 @@ public class PullUpSwipeRefreshLayout extends SwipeRefreshLayout implements AbsL
         this.mEmptyView = emptyView;
         listView.setListEmptyView(emptyView);
     }
+
     @Override
     public boolean dispatchTouchEvent(@NonNull MotionEvent event) {
         final int action = event.getAction();
@@ -312,7 +313,7 @@ public class PullUpSwipeRefreshLayout extends SwipeRefreshLayout implements AbsL
         if (refreshing && null != mListView && mListView.isAdapterExist() && mEmptyView != null) {
             int listCount = mListView.getListItemCount() - mListView.getListHeaderViewsCount() - mListView.getListFooterViewsCount();
             if (listCount == 0) {
-                mEmptyView.setRefreshing(true);
+                mEmptyView.setRefreshing(refreshing);
                 return;
             }
         }

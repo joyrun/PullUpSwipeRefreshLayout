@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.thejoyrun.pullupswiperefreshlayout.BaseSwipeRefreshView;
 import com.thejoyrun.pullupswiperefreshlayout.EmptyView;
+import com.thejoyrun.pullupswiperefreshlayout.ListViewInter;
 import com.thejoyrun.pullupswiperefreshlayout.R;
 
 /**
@@ -48,7 +49,18 @@ public class SwipeRefreshRecyclerView extends BaseSwipeRefreshView {
         return mEmptyView;
     }
 
-    public ListRecyclerView getListRecyclerView() {
+    @Override
+    public void setRootListView(ListViewInter rootListView) {
+        if(rootListView instanceof ListRecyclerView) {
+            mRecyclerView = (ListRecyclerView) rootListView;
+        }else {
+            new ClassCastException();
+        }
+        mPullUpSwipeRefreshLayout.setListViewAndEmptyView(mRecyclerView,mEmptyView);
+    }
+
+    @Override
+    public ListRecyclerView getRootListView() {
         return mRecyclerView;
     }
 }

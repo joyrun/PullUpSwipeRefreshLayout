@@ -104,4 +104,8 @@ public abstract class BaseSwipeRefreshView extends RelativeLayout {
     public void setFooterViewShow(boolean toShow){
         mPullUpSwipeRefreshLayout.setFooterViewShow(toShow);
     }
+
+    public abstract void setRootListView(ListViewInter rootListView);
+
+    public abstract ListViewInter getRootListView();
 }
