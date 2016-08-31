@@ -88,7 +88,7 @@ public class RecyclerViewActivity extends Activity {
         mRecyclerAdapter.addData(strings);
     }
 
-    public class RecyclerAdapter extends ListRecyclerViewAdapter{
+    public class RecyclerAdapter extends ListRecyclerViewAdapter<MyViewHolder>{
 
         private ArrayList<String> stringDatas = new ArrayList<>();
 
@@ -98,14 +98,14 @@ public class RecyclerViewActivity extends Activity {
         }
 
         @Override
-        public BaseViewHolder onCreateViewContentHolder(ViewGroup parent, int viewType) {
+        public MyViewHolder onCreateViewContentHolder(ViewGroup parent, int viewType) {
 
             View inflate = getLayoutInflater().inflate(R.layout.item_sample, parent, false);
-            return new BaseViewHolder(inflate);
+            return new MyViewHolder(inflate);
         }
 
         @Override
-        public void onBindViewContentHolder(RecyclerView.ViewHolder holder, int position) {
+        public void onBindViewContentHolder(MyViewHolder holder, int position) {
             TextView textview = (TextView) holder.itemView.findViewById(R.id.text);
             textview.setText(stringDatas.get(position));
         }
@@ -128,6 +128,13 @@ public class RecyclerViewActivity extends Activity {
         public void clear(){
             stringDatas.clear();
             notifyDataSetChanged();
+        }
+    }
+
+    public class MyViewHolder extends ListRecyclerViewAdapter.BaseViewHolder{
+
+        public MyViewHolder(View itemView) {
+            super(itemView);
         }
     }
 }

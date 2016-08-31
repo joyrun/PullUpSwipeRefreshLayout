@@ -15,7 +15,7 @@ import static com.thejoyrun.pullupswiperefreshlayout.recycler.ListRecyclerHelper
  * Created by keven on 16/8/24.
  */
 
-public abstract class ListRecyclerViewAdapter<T extends ListRecyclerViewAdapter.BaseViewHolder> extends RecyclerView.Adapter {
+public abstract class ListRecyclerViewAdapter<T extends ListRecyclerViewAdapter.BaseViewHolder> extends RecyclerView.Adapter<T> {
 
     private View mFooterView;
 
@@ -30,10 +30,10 @@ public abstract class ListRecyclerViewAdapter<T extends ListRecyclerViewAdapter.
     }
 
     @Override
-    final public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        BaseViewHolder holder = null;
+    final public T onCreateViewHolder(ViewGroup parent, int viewType) {
+        T holder = null;
         if(viewType == FOOT_TYPE){
-            holder = new BaseViewHolder(mFooterView);
+            holder = (T)(new BaseViewHolder(mFooterView));
             holder.setItemType(FOOT_TYPE);
             return holder;
         }
@@ -41,10 +41,10 @@ public abstract class ListRecyclerViewAdapter<T extends ListRecyclerViewAdapter.
         return onCreateViewContentHolder(parent, viewType);
     }
 
-    public abstract BaseViewHolder onCreateViewContentHolder(ViewGroup parent, int viewType);
+    public abstract T onCreateViewContentHolder(ViewGroup parent, int viewType);
 
     @Override
-    final public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    final public void onBindViewHolder(T holder, int position) {
         mLastItemPosition = position;
         if( holder.getItemViewType() == FOOT_TYPE){
             return;
@@ -58,7 +58,7 @@ public abstract class ListRecyclerViewAdapter<T extends ListRecyclerViewAdapter.
      *  @param holder   该holder不包括 headitem 和 footitem的位置
      * @param position  该position不包括 headitem 和 footitem的位置
      */
-    public abstract void onBindViewContentHolder(RecyclerView.ViewHolder holder, int position);
+    public abstract void onBindViewContentHolder(T holder, int position);
 
     @Override
     final public int getItemViewType(int position) {
