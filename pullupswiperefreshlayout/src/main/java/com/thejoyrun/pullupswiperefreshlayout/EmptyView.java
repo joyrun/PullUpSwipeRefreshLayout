@@ -14,8 +14,6 @@ public class EmptyView extends RelativeLayout {
 
     private View empty_refresh;
     private View empty_tips;
-    private View empty_icon;
-    private View empty_progress;
     private EmptyViewListener mEmptyViewListener;
 
     public EmptyView(Context context) {
@@ -37,8 +35,6 @@ public class EmptyView extends RelativeLayout {
         RelativeLayout.LayoutParams layoutParams = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT);
         this.addView(view, layoutParams);
-        empty_progress = findViewById(R.id.empty_progress);
-        empty_icon = findViewById(R.id.empty_icon);
         empty_tips = findViewById(R.id.empty_tips);
         empty_refresh = findViewById(R.id.empty_refresh);
         empty_refresh.setOnClickListener(new OnClickListener() {
@@ -52,8 +48,6 @@ public class EmptyView extends RelativeLayout {
     }
 
     public void setRefreshing(boolean show) {
-        empty_progress.setVisibility(show ? VISIBLE : GONE);
-        empty_icon.setVisibility(!show ? VISIBLE : GONE);
         empty_tips.setVisibility(!show ? VISIBLE : GONE);
         empty_refresh.setVisibility(!show ? VISIBLE : GONE);
     }

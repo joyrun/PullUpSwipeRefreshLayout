@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.thejoyrun.pullupswiperefreshlayout.FooterView;
+
 import java.util.List;
 
 import static com.thejoyrun.pullupswiperefreshlayout.recycler.ListRecyclerHelper.ItemType.FOOT_TYPE;
@@ -15,9 +17,9 @@ import static com.thejoyrun.pullupswiperefreshlayout.recycler.ListRecyclerHelper
  * Created by keven on 16/8/24.
  */
 
-public abstract class ListRecyclerViewAdapter<T extends ListRecyclerViewAdapter.BaseViewHolder> extends RecyclerView.Adapter<T> {
+public abstract class ListRecyclerViewAdapter<T extends ListRecyclerViewAdapter.BaseViewHolder,E extends View> extends RecyclerView.Adapter<T> {
 
-    private View mFooterView;
+    private E mFooterView;
 
     private int mLastItemPosition;
 
@@ -47,10 +49,13 @@ public abstract class ListRecyclerViewAdapter<T extends ListRecyclerViewAdapter.
     final public void onBindViewHolder(T holder, int position) {
         mLastItemPosition = position;
         if( holder.getItemViewType() == FOOT_TYPE){
+            onBindFooterView((E)(holder.itemView), position);
             return;
         }
-
         onBindViewContentHolder(holder,position);
+    }
+
+    public void onBindFooterView(E footerView, int position) {
     }
 
     /**
@@ -82,8 +87,8 @@ public abstract class ListRecyclerViewAdapter<T extends ListRecyclerViewAdapter.
     @Override
     final public int getItemCount() {
         int itemcount = 0;
-        itemcount = null == mFooterView ? itemcount : itemcount + 1;
         itemcount = itemcount + getListCount();
+        itemcount = null == mFooterView ? itemcount : itemcount + 1;
         return itemcount;
     }
 
@@ -93,7 +98,7 @@ public abstract class ListRecyclerViewAdapter<T extends ListRecyclerViewAdapter.
      */
     public abstract int getListCount();
 
-    public void addFooterView(View v){
+    public void addFooterView(E v){
         mFooterView = v;
     }
 

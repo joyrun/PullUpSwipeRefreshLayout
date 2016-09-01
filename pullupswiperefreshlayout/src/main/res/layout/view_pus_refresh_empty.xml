@@ -6,19 +6,6 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <ProgressBar
-        android:id="@+id/empty_progress"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:indeterminate="true" />
-
-    <ImageView
-        android:id="@+id/empty_icon"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:indeterminate="true"
-        android:src="@drawable/icon_pus_wifi" />
-
     <TextView
         android:id="@+id/empty_tips"
         android:layout_width="wrap_content"

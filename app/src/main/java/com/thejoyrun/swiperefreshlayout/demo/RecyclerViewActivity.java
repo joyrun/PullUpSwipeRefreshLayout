@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.thejoyrun.pullupswiperefreshlayout.FooterView;
 import com.thejoyrun.pullupswiperefreshlayout.PullUpSwipeRefreshLayout;
 import com.thejoyrun.pullupswiperefreshlayout.list.SwipeRefreshListView;
 import com.thejoyrun.pullupswiperefreshlayout.recycler.ListRecyclerView;
@@ -88,7 +89,7 @@ public class RecyclerViewActivity extends Activity {
         mRecyclerAdapter.addData(strings);
     }
 
-    public class RecyclerAdapter extends ListRecyclerViewAdapter<MyViewHolder>{
+    public class RecyclerAdapter extends ListRecyclerViewAdapter<MyViewHolder,FooterView>{
 
         private ArrayList<String> stringDatas = new ArrayList<>();
 

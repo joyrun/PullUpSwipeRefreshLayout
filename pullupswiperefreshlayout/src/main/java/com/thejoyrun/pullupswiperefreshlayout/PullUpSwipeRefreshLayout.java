@@ -24,7 +24,7 @@ public class PullUpSwipeRefreshLayout extends SwipeRefreshLayout implements AbsL
     private boolean mMeasured = false;
     private boolean mPreMeasureRefreshing = false;
 
-    private View mFooterView;
+    private FooterView mFooterView;
     private TextView pull_to_refresh_load_more_text;
     private ProgressBar pull_to_refresh_load_progress;
     private EmptyView mEmptyView;
@@ -163,14 +163,12 @@ public class PullUpSwipeRefreshLayout extends SwipeRefreshLayout implements AbsL
 
     public void initListView() {
         if (mFooterView == null) {
-            mFooterView = LayoutInflater.from(getContext()).inflate(R.layout.view_pus_refresh_loading_footer, null, false);
+            mFooterView = new FooterView(getContext());
 
-            mFooterView.setLayoutParams(new AbsListView.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT));
-            pull_to_refresh_load_more_text = (TextView) mFooterView.findViewById(R.id.pull_to_refresh_load_more_text);
-            pull_to_refresh_load_progress = (ProgressBar) mFooterView.findViewById(R.id.pull_to_refresh_load_progress);
+            pull_to_refresh_load_more_text = mFooterView.getTextView();
+            pull_to_refresh_load_progress = mFooterView.getProgressBar();
             pull_to_refresh_load_progress.setVisibility(GONE);
 
-            mListView.addFooterItem(mFooterView);
             mFooterView.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -180,6 +178,7 @@ public class PullUpSwipeRefreshLayout extends SwipeRefreshLayout implements AbsL
                 }
             });
         }
+        mListView.addFooterItem(mFooterView);
         mFooterView.setVisibility(View.VISIBLE);
     }
 
