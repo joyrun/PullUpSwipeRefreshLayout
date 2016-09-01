@@ -108,4 +108,5 @@ public abstract class BaseSwipeRefreshView extends RelativeLayout {
     public abstract void setRootListView(ListViewInter rootListView);
 
     public abstract ListViewInter getRootListView();
+
 }

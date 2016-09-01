@@ -23,4 +23,6 @@ public interface ListViewInter {
     int getListFooterViewsCount();
 
     void setListEmptyView(View v);
+
+    void removeEmptyView();
 }

@@ -137,9 +137,17 @@ public class ListRecyclerView<T extends ListRecyclerViewAdapter>extends Recycler
     }
 
     @Override
+    public void removeEmptyView() {
+        if(null != mEmptyView){
+            mEmptyView.setVisibility(GONE);
+            setEmptyView(null);
+        }
+    }
+
+    @Override
     public void onViewAdded(View child) {
-        setEmptyView(mEmptyView);
         super.onViewAdded(child);
+        removeEmptyView();
     }
 
     /**

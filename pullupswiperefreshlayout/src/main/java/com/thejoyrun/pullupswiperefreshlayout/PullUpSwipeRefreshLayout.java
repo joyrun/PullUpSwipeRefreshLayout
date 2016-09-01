@@ -145,7 +145,7 @@ public class PullUpSwipeRefreshLayout extends SwipeRefreshLayout implements AbsL
      * 如果到了最底部,而且是上拉操作.那么执行onLoad方法
      */
     private void autoLoad() {
-        if (isLoadAutoEnabled()) {
+        if (isLoadAutoEnabled() && isLoadEnabled()) {
             setLoading(true);
         }
     }
