@@ -61,8 +61,4 @@ public class SwipeRefreshListView extends BaseSwipeRefreshView {
     public ListViewV2 getRootListView() {
         return mListView;
     }
-
-    public ListView getListView() {
-        return mListView;
-    }
 }

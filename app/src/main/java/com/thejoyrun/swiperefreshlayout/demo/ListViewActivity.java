@@ -26,7 +26,7 @@ public class ListViewActivity extends AppCompatActivity {
         refresh_layout = (SwipeRefreshListView) findViewById(R.id.swipe_refresh_list_view);
         sampleAdapter = new SampleAdapter(this);
 
-        refresh_layout.getListView().setAdapter(sampleAdapter);
+        refresh_layout.getRootListView().setAdapter(sampleAdapter);
         refresh_layout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {

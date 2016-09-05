@@ -178,10 +178,9 @@ public class PullUpSwipeRefreshLayout extends SwipeRefreshLayout implements AbsL
                 }
             });
 
-            mFooterView.setVisibility(INVISIBLE);
         }
         mListView.addFooterItem(mFooterView);
-        mFooterView.setVisibility(View.VISIBLE);
+        mFooterView.setVisibility(INVISIBLE);
     }
 
     private void updateFooter() {
@@ -309,15 +308,21 @@ public class PullUpSwipeRefreshLayout extends SwipeRefreshLayout implements AbsL
 
 
     @Override
-    public void setRefreshing(final boolean refreshing) {
+    public void setRefreshing(boolean refreshing) {
+        super.setRefreshing(refreshing);
         isRealRefreshing = refreshing;
-        if (refreshing && null != mListView && mListView.isAdapterExist() && mEmptyView != null) {
+        if (!isRealRefreshing && null != mListView && mListView.isAdapterExist() && mEmptyView != null) {
             int listCount = mListView.getListItemCount() - mListView.getListHeaderViewsCount() - mListView.getListFooterViewsCount();
             if (listCount == 0) {
-                mEmptyView.setRefreshing(refreshing);
-                return;
+                mEmptyView.setRefreshing(isRealRefreshing);
+            }else {
+                mListView.removeEmptyView();
             }
+        }else if(!isRealRefreshing && (null == mListView || !mListView.isAdapterExist()) && mEmptyView != null){
+            mEmptyView.setRefreshing(isRealRefreshing);
         }
+
+
 
         if (!mMeasured) {
             mPreMeasureRefreshing = refreshing;
@@ -329,7 +334,6 @@ public class PullUpSwipeRefreshLayout extends SwipeRefreshLayout implements AbsL
         }
 
     }
-
 
     @Override
     public void setOnRefreshListener(OnRefreshListener listener) {

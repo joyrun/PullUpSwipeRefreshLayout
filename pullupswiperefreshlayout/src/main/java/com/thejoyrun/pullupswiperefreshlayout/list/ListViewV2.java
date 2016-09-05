@@ -73,10 +73,10 @@ public class ListViewV2 extends ListView implements ListViewInter {
             setEmptyView(null);
         }
     }
-
-    @Override
-    public void onViewAdded(View child) {
-        super.onViewAdded(child);
-        removeEmptyView();
-    }
+//
+//    @Override
+//    public void onViewAdded(View child) {
+//        super.onViewAdded(child);
+//        removeEmptyView();
+//    }
 }

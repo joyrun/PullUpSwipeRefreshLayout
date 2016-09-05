@@ -14,16 +14,16 @@
         android:gravity="center"
         android:text="网络不给力"
         android:textColor="@android:color/black"
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        android:visibility="invisible"/>
 
-    <Button
+    <ImageButton
         android:id="@+id/empty_refresh"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginTop="30dp"
-        android:text="刷新"
-        android:textColor="@android:color/black"
-        android:textSize="15sp" />
+        android:visibility="invisible"
+       android:background="@drawable/icon_pus_refresh"/>
 
 
 </LinearLayout>

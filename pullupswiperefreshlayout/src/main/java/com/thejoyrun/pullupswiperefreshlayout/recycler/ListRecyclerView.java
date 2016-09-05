@@ -144,11 +144,11 @@ public class ListRecyclerView<T extends ListRecyclerViewAdapter>extends Recycler
         }
     }
 
-    @Override
-    public void onViewAdded(View child) {
-        super.onViewAdded(child);
-        removeEmptyView();
-    }
+//    @Override
+//    public void onViewAdded(View child) {
+//        super.onViewAdded(child);
+//        removeEmptyView();
+//    }
 
     /**
      * Sets the view to show if the adapter is empty
