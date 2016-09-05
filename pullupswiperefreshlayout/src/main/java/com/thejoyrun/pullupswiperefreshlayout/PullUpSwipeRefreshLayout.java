@@ -177,6 +177,8 @@ public class PullUpSwipeRefreshLayout extends SwipeRefreshLayout implements AbsL
                     }
                 }
             });
+
+            mFooterView.setVisibility(INVISIBLE);
         }
         mListView.addFooterItem(mFooterView);
         mFooterView.setVisibility(View.VISIBLE);
@@ -352,7 +354,7 @@ public class PullUpSwipeRefreshLayout extends SwipeRefreshLayout implements AbsL
 
     public void setLoadEnabled(boolean mLoadEnabled) {
         this.mLoadEnabled = mLoadEnabled;
-        updateFooter();
+//        updateFooter();
     }
 
     public boolean isRefreshEnabled() {
