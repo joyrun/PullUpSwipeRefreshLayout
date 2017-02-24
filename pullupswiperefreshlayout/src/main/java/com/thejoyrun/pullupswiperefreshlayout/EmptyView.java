@@ -48,8 +48,8 @@ public class EmptyView extends RelativeLayout {
     }
 
     public void setRefreshing(boolean show) {
-        empty_tips.setVisibility(!show ? VISIBLE : GONE);
-        empty_refresh.setVisibility(!show ? VISIBLE : GONE);
+        empty_tips.setVisibility(GONE);
+        empty_refresh.setVisibility(GONE);
     }
 
     public EmptyViewListener getEmptyViewListener() {
