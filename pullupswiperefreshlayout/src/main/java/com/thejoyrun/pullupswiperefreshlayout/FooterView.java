@@ -2,7 +2,6 @@ package com.thejoyrun.pullupswiperefreshlayout;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
@@ -18,6 +17,7 @@ public class FooterView extends RelativeLayout {
 
     private TextView mTextView;
     private ProgressBar mProgressBar;
+    private View mLayoutFooter;
 
     public FooterView(Context context) {
         this(context, null, 0);
@@ -32,30 +32,37 @@ public class FooterView extends RelativeLayout {
         init(context);
     }
 
-    private void init(Context context){
+    private void init(Context context) {
         View inflate = inflate(context, R.layout.view_pus_refresh_loading_footer, this);
-
+        mLayoutFooter = inflate.findViewById(R.id.layout_footer);
         inflate.setLayoutParams(new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         mTextView = (TextView) inflate.findViewById(R.id.pull_to_refresh_load_more_text);
         mProgressBar = (ProgressBar) inflate.findViewById(R.id.pull_to_refresh_load_progress);
 //        this.addView(inflate);
     }
 
-    public TextView getTextView(){
+    public TextView getTextView() {
         return mTextView;
     }
 
-    public ProgressBar getProgressBar(){
+    public ProgressBar getProgressBar() {
         return mProgressBar;
     }
 
     /**
-     //         * @param visibility  加载圈是否显示
-     //         * @param text  显示的文字
-     //         */
-        public void setProgressAndText(int visibility,String text){
-            mProgressBar.setVisibility(visibility);
-            mTextView.setText(text);
+     * //         * @param visibility  加载圈是否显示
+     * //         * @param text  显示的文字
+     * //
+     */
+    public void setProgressAndText(int visibility, String text) {
+        mProgressBar.setVisibility(visibility);
+        mTextView.setText(text);
+    }
+
+    public void setVisibility(int visibility) {
+        if (mLayoutFooter != null) {
+            mLayoutFooter.setVisibility(visibility);
         }
+    }
 
 }

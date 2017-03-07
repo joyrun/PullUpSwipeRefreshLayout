@@ -5,7 +5,6 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.AttributeSet;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
@@ -373,11 +372,15 @@ public class PullUpSwipeRefreshLayout extends SwipeRefreshLayout implements AbsL
         if(null != mFooterView){
             if(toShow){
                 mFooterView.setVisibility(VISIBLE);
-                mFooterView.getLayoutParams().height = LayoutParams.WRAP_CONTENT;
+//                mFooterView.getLayoutParams().height = LayoutParams.WRAP_CONTENT;
             }else {
                 mFooterView.setVisibility(GONE);
-                mFooterView.getLayoutParams().height = 0;
+//                mFooterView.getLayoutParams().height = 0;
             }
         }
+    }
+
+    public FooterView getFooterView() {
+        return mFooterView;
     }
 }
